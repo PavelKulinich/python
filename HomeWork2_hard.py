@@ -82,38 +82,40 @@ else:
 #
 # Вход: 11
 # Выход: 5 3
-x = 13
+
+x = int(input('Введите номер комнаты: '))
 sch = 1
 lst = []
-lst1 = []
-k = 0;
+b = 1
+floor=0
+num=0
 for i in range(x):
-    for m in range(i):
-        if sch > x:
-            break
-        else:
-            lst.append([i] * i)
-            sch = sch * i
+	for m in range(i):
+		if sch>x:
+			break
+		else:
+			lst.append([i]*i)
+			sch+=1
 
-t = 0
 for i in lst:
-    if t == 0:
-        lst1.append(i)
-        t += 1
-    else:
-        for v in range(len(i)):
-            #            if v==0:
-            lst1.append([i[v] + t])
-            #            else:
-            #                lst1[k]
-            t += 1
-
-        # for i in range(x):
-#   if i==0:
-#      continue
-#    else:
-#        for t in lst[i]:
-#            print(i)
-#            t = t+1
-print(lst)
-print(lst1)                                                                            
+	if i[0]==1:
+		continue
+	else:
+		for v in range(len(i)):
+			if i[v]==2 and v==0:
+				continue
+			else:
+				i[v]=i[v]+b
+				b+=1
+t=1
+for q in lst:
+	if x in q:
+		floor=t
+		num=q.index(x)
+		num+=1 #т.к q.index получает индекс, то чтобы получить именно номер, прибавим единицу, т.к индекс начинается с 0
+		break
+	else:
+		t+=1
+print('Номер этажа: ',floor)
+print('Порядковый номер на этаже: ',num)
+                                                                            
